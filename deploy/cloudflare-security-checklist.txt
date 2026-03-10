@@ -1,0 +1,42 @@
+Recommended Cloudflare security setup for Empire Build Solutions
+
+1. Rate limiting rule for the contact API
+- Expression:
+  (http.request.uri.path eq "/api/contact" and http.request.method eq "POST")
+- Action:
+  Block or Managed Challenge
+- Threshold:
+  5 requests
+- Period:
+  10 minutes
+- Characteristics:
+  IP
+
+Recommended default: Managed Challenge first, then Block if spam still gets through.
+
+2. Optional broader protection for contact page traffic
+- Expression:
+  (http.request.uri.path eq "/contact.html")
+- Action:
+  Managed Challenge
+- Only use if the page itself gets hammered, otherwise leave this off.
+
+3. Skip rule for Jellyfin path
+- Expression:
+  starts_with(http.request.uri.path, "/tv")
+- Action:
+  Skip custom WAF/rate limiting rules that would break streaming
+
+4. Bot protection
+- Turn on Super Bot Fight Mode if available
+- Use definitely automated bots = block/challenge
+- Watch for false positives before making it aggressive
+
+5. Security events to watch
+- 1010 or 1020 blocks
+- repeated POSTs to /api/contact
+- repeated hits with empty/invalid payloads
+
+6. If spam appears later
+- Add Cloudflare Turnstile to the contact form
+- Keep honeypot and server-side validation enabled

@@ -1,0 +1,27 @@
+[Unit]
+Description=Empire Build Solutions site
+After=network.target
+
+[Service]
+Type=simple
+User=rickoserver
+WorkingDirectory=/home/rickoserver/Empirebuildsolutions
+EnvironmentFile=/etc/default/empirebuildsolutions-site
+ExecStart=/usr/bin/python3 /home/rickoserver/Empirebuildsolutions/server.py
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+SystemCallArchitectures=native
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

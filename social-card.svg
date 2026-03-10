@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Empire Build Solutions social card">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#1e2d22"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <circle cx="980" cy="120" r="160" fill="#2f9e44" opacity="0.14"/>
+  <circle cx="1040" cy="520" r="220" fill="#2f9e44" opacity="0.1"/>
+  <rect x="70" y="74" width="94" height="94" rx="24" fill="#2f9e44"/>
+  <text x="117" y="133" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="800" fill="#ffffff">EB</text>
+  <text x="70" y="255" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="#8dd8a0">SOFTWARE STUDIO AND AI AUTOMATION LAB</text>
+  <text x="70" y="340" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="68" font-weight="700" fill="#ffffff">Empire Build Solutions</text>
+  <text x="70" y="420" font-family="Inter, Arial, sans-serif" font-size="34" fill="#d9e2dc">Building software, automation tools and AI systems</text>
+  <text x="70" y="465" font-family="Inter, Arial, sans-serif" font-size="34" fill="#d9e2dc">for modern businesses.</text>
+</svg>
