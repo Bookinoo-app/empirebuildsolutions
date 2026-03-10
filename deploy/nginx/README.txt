@@ -1,4 +1,4 @@
-Planned nginx routing:
+Reference nginx routing:
 
 - empirebuildsolutions.co.uk -> http://127.0.0.1:8001
 - empirebuildsolutions.co.uk/tv -> http://127.0.0.1:8096/
@@ -10,8 +10,8 @@ Files:
 - empirebuildsolutions.co.uk.conf
 - bookinoo.empirebuildsolutions.co.uk.conf
 
-Current blockers to applying live:
+Notes:
 
-1. `bookinoo.empirebuildsolutions.co.uk` does not currently resolve on this server.
-2. Applying nginx changes requires sudo.
-3. HTTPS for `bookinoo.empirebuildsolutions.co.uk` requires a certificate after DNS is pointed correctly.
+1. Live traffic is currently handled through Cloudflare Tunnel rather than nginx as the primary public entrypoint.
+2. These files remain useful as reference server configs or if routing is moved back behind nginx later.
+3. `amare.empirebuildsolutions.co.uk` should remain untouched unless the Amare deployment changes separately.

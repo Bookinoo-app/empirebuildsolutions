@@ -36,7 +36,7 @@ def send_notification_email(record):
     smtp_username = os.environ.get("SMTP_USERNAME", "").strip()
     smtp_password = os.environ.get("SMTP_PASSWORD", "").strip()
     smtp_from = os.environ.get("SMTP_FROM", smtp_username).strip()
-    smtp_to = os.environ.get("CONTACT_EMAIL_TO", "empirebuildsolutionsltd@gmail.com").strip()
+    smtp_to = os.environ.get("CONTACT_EMAIL_TO", "").strip()
     smtp_use_tls = os.environ.get("SMTP_USE_TLS", "true").strip().lower() != "false"
 
     if not all([smtp_host, smtp_username, smtp_password, smtp_from, smtp_to]):

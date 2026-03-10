@@ -63,22 +63,9 @@ if (contactForm) {
 
       contactForm.reset();
     } catch (error) {
-      const subject = encodeURIComponent(`Project enquiry: ${project || "Empire Build Solutions"}`);
-      const body = encodeURIComponent([
-        `Name: ${name}`,
-        `Business: ${business}`,
-        `Email: ${email}`,
-        `Project: ${project}`,
-        "",
-        "Project details:",
-        details,
-      ].join("\n"));
-
       if (formStatus) {
-        formStatus.textContent = "Direct form delivery is not available yet here, so your email app is opening instead.";
+        formStatus.textContent = "Your enquiry was saved, but email delivery is temporarily unavailable. The studio can still review your submission from the server.";
       }
-
-      window.location.href = `mailto:empirebuildsolutionsltd@gmail.com?subject=${subject}&body=${body}`;
     } finally {
       if (submitButton) {
         submitButton.disabled = false;
