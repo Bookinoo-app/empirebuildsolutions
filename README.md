@@ -4,18 +4,21 @@ Official website for Empire Build Solutions - a software studio building platfor
 
 ## Overview
 
-This repository contains the public marketing site for:
+This repository contains the public website for Empire Build Solutions, including:
 
-- `empirebuildsolutions.co.uk` - main studio site
-- `amare.empirebuildsolutions.co.uk` - live client project
-- `bookinoo` product positioning pages inside the studio site
+- the main studio site
+- featured work and case study pages
+- product positioning pages
+- contact handling for project enquiries
 
-The site is a mostly static HTML/CSS/JS project with a lightweight Python backend used for:
+## Stack
 
-- contact form handling
-- local submission storage
-- SMTP email delivery
-- basic request hardening and rate limiting
+- HTML
+- CSS
+- JavaScript
+- Python
+
+The site is mostly static, with a lightweight Python backend used for contact form handling.
 
 ## Main Pages
 
@@ -28,123 +31,41 @@ The site is a mostly static HTML/CSS/JS project with a lightweight Python backen
 - `amare.html` - Amare case study
 - `bookinoo.html` - Bookinoo product page
 
-Legacy pages remain for compatibility and redirect to the newer structure:
+Legacy pages are kept for compatibility and redirect to the newer structure.
 
-- `about.html`
-- `apps.html`
-- `portfolio.html`
-- `lab.html`
+## Features
 
-## Project Structure
-
-```text
-.
-|- assets/
-|  |- logos/
-|  |- projects/
-|- data/
-|  |- contact-submissions.jsonl
-|  |- security-events.jsonl
-|- deploy/
-|  |- cloudflare-security-checklist.txt
-|  |- nginx/
-|  |- systemd/
-|- server.py
-|- styles.css
-|- script.js
-```
+- studio marketing site
+- product and case study pages
+- contact form handling
+- input validation and anti-spam protections
+- deployment support templates
 
 ## Local Development
 
-### Static preview only
-
-If you only want to preview the site without the backend:
+### Static preview
 
 ```bash
 python3 -m http.server 8000
 ```
 
-### Full local server with contact form backend
+### Backend preview
 
 ```bash
 python3 server.py
 ```
 
-By default the custom server runs on port `8001`.
+## Environment
 
-Then open:
+Use `.env.example` as a reference for the contact-mail configuration.
 
-```text
-http://localhost:8001
-```
+Production secrets and real environment values are supplied outside version control.
 
-## Contact Form
+## Deployment
 
-The contact form submits to:
+This repository includes deployment-related templates and reference files for running the site in production.
 
-```text
-POST /api/contact
-```
-
-The backend will:
-
-- validate inputs
-- apply rate limiting
-- reject oversized or suspicious submissions
-- store valid submissions in `data/contact-submissions.jsonl`
-- send email if SMTP is configured
-
-If email delivery fails, submissions are still stored locally.
-
-## Environment Variables
-
-Use `.env.example` as the reference for SMTP-related values.
-
-This project does not load a local `.env` automatically. In production, environment values are supplied through the systemd environment file:
-
-```text
-/etc/default/empirebuildsolutions-site
-```
-
-Never commit real SMTP credentials, destination inboxes, app passwords, tunnel credentials, or server secrets into this repository.
-
-## Production Service
-
-The site runs as a systemd service:
-
-```text
-empirebuildsolutions-site
-```
-
-Service file source in repo:
-
-```text
-deploy/systemd/empirebuildsolutions-site.service
-```
-
-Useful commands:
-
-```bash
-sudo systemctl status empirebuildsolutions-site
-sudo systemctl restart empirebuildsolutions-site
-sudo journalctl -u empirebuildsolutions-site -n 100 --no-pager
-```
-
-## Cloudflare / Routing Notes
-
-Current live routing is handled through a Cloudflare Tunnel.
-
-Expected public behavior:
-
-- `empirebuildsolutions.co.uk` -> main site on `127.0.0.1:8001`
-- `empirebuildsolutions.co.uk/tv` -> Jellyfin on `127.0.0.1:8096`
-- `amare.empirebuildsolutions.co.uk` -> existing Amare service
-- `bookinoo.empirebuildsolutions.co.uk` -> tunnel route exists, but the public site does not expose that link
-
-Reference docs:
-
-- `deploy/cloudflare-security-checklist.txt`
-- `deploy/nginx/`
+Production-specific infrastructure details, secrets, credentials, and machine-specific configuration are intentionally kept outside this public repository.
 
 ## Public Repo Safety
 
@@ -152,58 +73,20 @@ This repository is intended to stay public.
 
 Safe to keep here:
 
-- HTML, CSS, JS, and Python application code
-- deployment templates and reference configs
-- placeholder environment examples
-- public domain names and public-facing product positioning
+- public site code
+- public-facing content
+- asset files used by the site
+- deployment templates and reference examples
 
 Do not commit:
 
-- real SMTP usernames/passwords
-- real inbox destinations if you do not want them public
-- server environment files
-- Cloudflare tunnel credentials
-- private logs or submission data
-- machine-specific secrets or tokens
-
-## Security
-
-The backend currently includes:
-
-- input validation
-- request size limits
-- email validation
-- per-IP rate limiting
-- honeypot anti-spam field
-- security event logging
-- security headers
-- hardened systemd service settings
-
-Cloudflare should also enforce additional protection on `POST /api/contact`.
-
-## Logging
-
-- submissions: `data/contact-submissions.jsonl`
-- blocked/suspicious events: `data/security-events.jsonl`
-
-These files are intentionally ignored by git.
-
-## Git
-
-Primary branch:
-
-```text
-main
-```
-
-Remote:
-
-```text
-git@github.com:Bookinoo-app/empirebuildsolutions.git
-```
+- secrets or credentials
+- real environment files
+- server-side logs or submission data
+- machine-specific production configuration
+- private operational notes
 
 ## Notes
 
-- Bookinoo is intentionally positioned as an in-development product and not publicly linked as a live app from the site.
+- Bookinoo is intentionally positioned as an in-development product and is not publicly linked as a live app from the site.
 - Amare remains publicly linked as a live client-facing case study.
-- The repository contains deployment notes, but live secrets and machine-specific config stay outside version control.
