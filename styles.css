@@ -769,6 +769,10 @@ input {
   box-shadow: 0 10px 24px rgba(17, 17, 17, 0.06);
 }
 
+.secondary-shot {
+  margin-top: 8px;
+}
+
 .portfolio-card {
   display: grid;
   align-content: start;
