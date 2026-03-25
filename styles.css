@@ -208,6 +208,14 @@ main {
   max-width: 920px;
 }
 
+.hero-card {
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcfb 100%);
+  box-shadow: var(--shadow);
+}
+
 .hero-snapshot {
   display: grid;
   gap: 16px;
@@ -1026,6 +1034,10 @@ ul {
   .contact-form {
     padding: 20px;
     border-radius: 20px;
+  }
+
+  .hero-card {
+    padding: 22px;
   }
 
   .snapshot-head {
