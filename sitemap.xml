@@ -1,11 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>/</loc></url>
-  <url><loc>/products.html</loc></url>
-  <url><loc>/work.html</loc></url>
-  <url><loc>/studio.html</loc></url>
-  <url><loc>/services.html</loc></url>
-  <url><loc>/contact.html</loc></url>
-  <url><loc>/amare.html</loc></url>
-  <url><loc>/bookinoo.html</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://empirebuildsolutions.co.uk/</loc>
+  </url>
+  <url>
+    <loc>https://empirebuildsolutions.co.uk/products.html</loc>
+    <image:image>
+      <image:loc>https://empirebuildsolutions.co.uk/assets/projects/bookinoo/1st%20advestising%20card%20most%20wanted.jpg</image:loc>
+      <image:caption>Bookinoo deployed product advertising preview</image:caption>
+      <image:title>Bookinoo deployed product</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://empirebuildsolutions.co.uk/work.html</loc>
+    <image:image>
+      <image:loc>https://empirebuildsolutions.co.uk/assets/projects/bookinoo/1st%20advestising%20card%20most%20wanted.jpg</image:loc>
+      <image:caption>Bookinoo deployed operations platform preview</image:caption>
+      <image:title>Bookinoo on work page</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://empirebuildsolutions.co.uk/studio.html</loc>
+  </url>
+  <url>
+    <loc>https://empirebuildsolutions.co.uk/services.html</loc>
+  </url>
+  <url>
+    <loc>https://empirebuildsolutions.co.uk/contact.html</loc>
+  </url>
+  <url>
+    <loc>https://empirebuildsolutions.co.uk/amare.html</loc>
+  </url>
+  <url>
+    <loc>https://empirebuildsolutions.co.uk/bookinoo.html</loc>
+    <image:image>
+      <image:loc>https://empirebuildsolutions.co.uk/assets/projects/bookinoo/1st%20advestising%20card%20most%20wanted.jpg</image:loc>
+      <image:caption>Bookinoo deployed booking platform advertising card</image:caption>
+      <image:title>Bookinoo deployed platform preview</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://empirebuildsolutions.co.uk/assets/projects/bookinoo/bookinoo-screenshot-1.png</image:loc>
+      <image:caption>Bookinoo booking and operations dashboard screenshot</image:caption>
+      <image:title>Bookinoo dashboard screenshot</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://empirebuildsolutions.co.uk/assets/projects/bookinoo/bookinoo-screenshot-2.png</image:loc>
+      <image:caption>Bookinoo deployed service workflow interface screenshot</image:caption>
+      <image:title>Bookinoo service workflow screenshot</image:title>
+    </image:image>
+  </url>
 </urlset>
