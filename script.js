@@ -7,6 +7,18 @@ if (yearNode) {
   yearNode.textContent = new Date().getFullYear();
 }
 
+const availableProductsSection = document.getElementById("available-products-section");
+const featuredWorkSection = document.getElementById("featured-work-section");
+
+if (
+  availableProductsSection &&
+  featuredWorkSection &&
+  availableProductsSection.parentNode &&
+  availableProductsSection.parentNode === featuredWorkSection.parentNode
+) {
+  availableProductsSection.parentNode.insertBefore(availableProductsSection, featuredWorkSection);
+}
+
 if (contactForm) {
   contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
