@@ -74,3 +74,131 @@ if (contactForm) {
     }
   });
 }
+
+(function setupBookinooGallery() {
+  const triggers = document.querySelectorAll('[data-bookinoo-gallery-trigger="true"]');
+  if (!triggers.length) return;
+
+  const images = [
+    {
+      src: "assets/projects/bookinoo/1st%20advestising%20card%20most%20wanted.jpg",
+      label: "Bookinoo advertising card",
+    },
+    {
+      src: "assets/projects/bookinoo/bookinoo-screenshot-1.png",
+      label: "Bookinoo product screenshot 1",
+    },
+    {
+      src: "assets/projects/bookinoo/bookinoo-screenshot-2.png",
+      label: "Bookinoo product screenshot 2",
+    },
+    {
+      src: "assets/projects/bookinoo/bookinoo-screenshot-3.png",
+      label: "Bookinoo product screenshot 3",
+    },
+  ];
+
+  let currentIndex = 0;
+  let startX = 0;
+  let startY = 0;
+
+  const modal = document.createElement("div");
+  modal.className = "gallery-modal";
+  modal.setAttribute("aria-hidden", "true");
+  modal.innerHTML = `
+    <div class="gallery-frame" role="dialog" aria-modal="true" aria-label="Bookinoo product image gallery">
+      <button type="button" class="gallery-close" aria-label="Close gallery">&times;</button>
+      <button type="button" class="gallery-nav prev" aria-label="Previous image">&#8249;</button>
+      <img class="gallery-image" src="" alt="Bookinoo product image" loading="eager" decoding="async">
+      <button type="button" class="gallery-nav next" aria-label="Next image">&#8250;</button>
+      <p class="gallery-caption"></p>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  const frame = modal.querySelector(".gallery-frame");
+  const imageEl = modal.querySelector(".gallery-image");
+  const captionEl = modal.querySelector(".gallery-caption");
+  const closeBtn = modal.querySelector(".gallery-close");
+  const prevBtn = modal.querySelector(".gallery-nav.prev");
+  const nextBtn = modal.querySelector(".gallery-nav.next");
+
+  function renderImage() {
+    const item = images[currentIndex];
+    if (!item) return;
+    imageEl.src = item.src;
+    imageEl.alt = item.label;
+    captionEl.textContent = `${currentIndex + 1}/${images.length} - ${item.label}`;
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    renderImage();
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    renderImage();
+  }
+
+  function openGallery(startIndex) {
+    currentIndex = Number.isInteger(startIndex) ? startIndex : 0;
+    renderImage();
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeGallery() {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  triggers.forEach((triggerEl) => {
+    triggerEl.addEventListener("click", () => {
+      const src = String(triggerEl.getAttribute("src") || "");
+      const matchedIndex = images.findIndex((item) => src.includes(item.src));
+      openGallery(matchedIndex >= 0 ? matchedIndex : 0);
+    });
+  });
+
+  closeBtn.addEventListener("click", closeGallery);
+  prevBtn.addEventListener("click", prevImage);
+  nextBtn.addEventListener("click", nextImage);
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeGallery();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!modal.classList.contains("is-open")) return;
+    if (event.key === "Escape") closeGallery();
+    if (event.key === "ArrowRight") nextImage();
+    if (event.key === "ArrowLeft") prevImage();
+  });
+
+  frame.addEventListener("touchstart", (event) => {
+    const touch = event.changedTouches && event.changedTouches[0];
+    if (!touch) return;
+    startX = touch.clientX;
+    startY = touch.clientY;
+  }, { passive: true });
+
+  frame.addEventListener("touchend", (event) => {
+    const touch = event.changedTouches && event.changedTouches[0];
+    if (!touch) return;
+    const deltaX = touch.clientX - startX;
+    const deltaY = touch.clientY - startY;
+    if (Math.abs(deltaX) < 40 || Math.abs(deltaX) < Math.abs(deltaY)) {
+      return;
+    }
+    if (deltaX < 0) {
+      nextImage();
+      return;
+    }
+    prevImage();
+  }, { passive: true });
+})();

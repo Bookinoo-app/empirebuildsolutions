@@ -781,6 +781,82 @@ input {
   margin-top: 8px;
 }
 
+[data-bookinoo-gallery-trigger="true"] {
+  cursor: zoom-in;
+}
+
+.gallery-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 8, 8, 0.9);
+  padding: 24px;
+}
+
+.gallery-modal.is-open {
+  display: flex;
+}
+
+.gallery-frame {
+  position: relative;
+  width: min(980px, 100%);
+}
+
+.gallery-image {
+  width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(20, 20, 20, 0.55);
+}
+
+.gallery-close,
+.gallery-nav {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(17, 17, 17, 0.72);
+  color: #ffffff;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.gallery-close {
+  top: -14px;
+  right: -14px;
+  width: 38px;
+  height: 38px;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.gallery-nav {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.gallery-nav.prev {
+  left: -18px;
+}
+
+.gallery-nav.next {
+  right: -18px;
+}
+
+.gallery-caption {
+  margin-top: 10px;
+  color: #e5e5e5;
+  text-align: center;
+  font-size: 0.92rem;
+}
+
 .portfolio-card {
   display: grid;
   align-content: start;
@@ -1043,5 +1119,22 @@ ul {
   .snapshot-head {
     align-items: center;
     flex-direction: row;
+  }
+
+  .gallery-modal {
+    padding: 14px;
+  }
+
+  .gallery-nav.prev {
+    left: 6px;
+  }
+
+  .gallery-nav.next {
+    right: 6px;
+  }
+
+  .gallery-close {
+    top: 6px;
+    right: 6px;
   }
 }
