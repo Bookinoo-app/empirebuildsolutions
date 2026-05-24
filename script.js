@@ -161,14 +161,6 @@ if (contactForm) {
       src: "assets/projects/bookinoo/bookinoo-screenshot-1.png",
       label: "Bookinoo product screenshot 1",
     },
-    {
-      src: "assets/projects/bookinoo/bookinoo-screenshot-2.png",
-      label: "Bookinoo product screenshot 2",
-    },
-    {
-      src: "assets/projects/bookinoo/bookinoo-screenshot-3.png",
-      label: "Bookinoo product screenshot 3",
-    },
   ];
 
   let currentIndex = 0;
